@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  database:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'TASystem'
+      MYSQL_ROOT_PASSWORD: '1234'
+    volumes:
+      - persist_db:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    networks:
+      - api
+
+  backend:
+    build: .
+    tty: true
+    ports:
+      - '9005:9005'
+    volumes:
+      - ./Backend:/usr/src/app
+      - /usr/src/app/.idea
+      - /usr/src/app/test
+    working_dir: /usr/src/app
+    command: bash -c "sbt \"run 9005\""
+    depends_on:
+      - database
+    networks:
+      - api
+
+  frontend:
+    build: .
+    tty: true
+    ports:
+      - '9038:9038'
+    volumes:
+      - ./Frontend:/usr/src/app
+    working_dir: /usr/src/app
+    command: bash -c "sbt \"run 9038\""
+    depends_on:
+      - database
+      - backend
+    networks:
+      - api
+volumes:
+  persist_db:
+
+
+networks:
+  api:

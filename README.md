@@ -25,5 +25,5 @@ Just two steps:
 
 That's all you have to do. The first build will probably take up to 10 minutes; that's expected. 
 After the first build, it should take about 2-3 minutes for the containers to start. 
-Also, anytime you save your code the containers will reload and the changes should be reflected. 
-Once your done working, it's a good idea to type `docker-compose down` and close the containers.
+Also, anytime you save your code the containers will reload and the changes should be reflected. <br />
+Once you're done working, it's a good idea to type `docker-compose down` and close the containers.

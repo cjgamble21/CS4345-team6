@@ -1,5 +1,5 @@
 .idea/
 .DS_Store
 _DS_Store
-**/target/
-**/logs/
+**/target/*
+**/logs/*

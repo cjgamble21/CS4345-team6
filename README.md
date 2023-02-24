@@ -8,7 +8,7 @@ This project's config file is currently setup to run with docker.
 If you'd like to keep on using IntelliJ, go into `./Backend/conf/application.conf` and change the 
 `default.url` line to the following: <br />
 ```jdbc
-default.url = "jdbc:mysql://localhost:3306?useSSL=true/TASystem"
+default.url = "jdbc:mysql://localhost:3306/TASystem?autoReconnect=true&useSSL=false"
 ```
 
 After this change, you should be able to make the database connection through IntelliJ

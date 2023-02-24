@@ -1,6 +1,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.typesafe.config.ConfigFactory;
 import play.libs.Json;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSRequest;
@@ -10,6 +11,8 @@ import java.util.concurrent.CompletionStage;
 
 
 public class User {
+	
+    private String requestURL = ConfigFactory.load().getString("backend.url");
 
     private String username;
 
@@ -35,7 +38,7 @@ public class User {
     public CompletionStage<WSResponse> checkAuthorized() {
         WSClient ws = play.test.WSTestClient.newClient(9005);
         //add username password
-        WSRequest request = ws.url("http://backend:9005/login");
+        WSRequest request = ws.url(this.requestURL + "/login");
         ObjectNode res = Json.newObject();
         res.put("username", this.username);
         res.put("password",this.password);
@@ -59,7 +62,7 @@ public class User {
         System.out.println(username);
         System.out.println(password);
 
-        WSRequest request = ws.url("http://backend:9005/signup");
+        WSRequest request = ws.url(this.requestURL + "/signup");
         return request.addHeader("Content-Type", "application/json")
                 .post(res)
                 .thenApply((WSResponse r) -> {

@@ -6,11 +6,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Play Setup Demo</title>
+    <title>Create Account</title>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="@routes.Assets.at("javascripts/isStudent.js")"></script>
 </head>
 
 <body>
@@ -19,11 +20,16 @@
 
     <div class="flex items-center justify-center h-screen">
         <div class="flex container border-solid border-2 border-black">
-            <form>
-                <div class="flex grow w-full border-solid border-2 border-red">
-                    <select></select>
-                    <input id="firstname" class="grow">
-                    <label for="firstname" class="grow">First Name</label>
+            <form action="" method="POST">
+                <div class="flex border-solid border-2 border-red-300">
+                    <select class="flex-none">
+                        <option></option>
+                        <option value="Mr">Mr.</option>
+                        <option value="Ms">Ms.</option>
+                        <option value="Dr">Dr.</option>
+                    </select>
+                    <input id="firstname" class="flex-auto">
+                    <label for="firstname" class="flex-auto">First Name</label>
 
                     <input id="lastname">
                     <label for="lastname">Last Name</label>
@@ -37,7 +43,7 @@
                     <label for="phone">Phone</label>
 
                     <input id="fax">
-                    <label for="fax">Fax</label>
+                    <label for="fax">Fax (optional)</label>
                 </div>
 
                 <div>
@@ -48,8 +54,7 @@
                     <input id="city">
                     <label for="city">City</label>
 
-                    <select id="state"></select>
-                    <label for="state">State</label>
+                    @states()
 
                     <input id="zip">
                     <label for="zip">Zip Code</label>
@@ -70,8 +75,14 @@
                     <input id="comments">
                     <label for="comments">Comments</label>
                 </div>
-                <div>
+                <div id="conditional">
                     <!-- conditionally render based on select field input -->
+                    <select id="status" onchange="isStudent()">
+                        <option></option>
+                        <option value="Faculty">Faculty</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Student">Student</option>
+                    </select>
                 </div>
             </form>
         </div>

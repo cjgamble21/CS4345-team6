@@ -3,9 +3,10 @@ const isStudent = () => {
   const possibleStartDates = [currentDate - 3, currentDate - 2, currentDate - 1, currentDate];
   const possibleGraduateDates = [currentDate, currentDate + 1, currentDate + 2, currentDate + 3];
 
-  const studentHTML = `
-      <label for="degree">Degree Plan</label>
-      <select id="degree">
+  const column1 = `
+      <div class="item-2">
+      <label for="degree" class="remove">Degree Plan</label>
+      <select id="degree" class="remove">
           <option value="Ph.D">Ph.D.</option>
           <option value="D.E.-SE">D.E.-SE</option>
           <option value="MS-CS">MS-CS</option>
@@ -14,7 +15,13 @@ const isStudent = () => {
           <option value="BS-CS">BS-CS</option>
           <option value="BA-CS">BA-CS</option>
       </select>
-      
+      </div>
+      `;
+
+  const column2 = `
+
+      <div class="column-2 remove">
+      <div class="item-3">
       <label for="startdate">Degree Begin</label>
       <select id="startdate">
           <option value="Fall ${possibleStartDates[0]}">Fall ${possibleStartDates[0]}</option>
@@ -26,7 +33,9 @@ const isStudent = () => {
           <option value="Fall ${possibleStartDates[3]}">Fall ${possibleStartDates[3]}</option>
           <option value="Spring ${possibleStartDates[3]}">Spring ${possibleStartDates[3]}</option>
       </select>
+      </div>
 
+      <div class="item-4">
       <label for="graddate">Graduation Date</label>
       <select id="graddate">
           <option value="Fall ${possibleGraduateDates[0]}">Fall ${possibleGraduateDates[0]}</option>
@@ -38,15 +47,15 @@ const isStudent = () => {
           <option value="Fall ${possibleGraduateDates[3]}">Fall ${possibleGraduateDates[3]}</option>
           <option value="Spring ${possibleGraduateDates[3]}">Spring ${possibleGraduateDates[3]}</option>
       </select>
+      </div>
+      </div>
   `;
   let status = document.getElementById('status').value;
-  let studentContent = document.createElement('div');
-  studentContent.innerHTML = studentHTML;
-  studentContent.setAttribute('id', 'student')
 
   if (status == "Student") {
-    document.getElementById('conditional').appendChild(studentContent);
+    document.getElementById('non-student').insertAdjacentHTML("beforeend", column1);
+    document.getElementById('conditional').insertAdjacentHTML("beforeend", column2);
   } else {
-    document.getElementById('student').remove();
+    document.querySelectorAll('.remove').forEach(e => e.remove());
   }
 }

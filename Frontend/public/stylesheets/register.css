@@ -1,0 +1,108 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: Convergence; 
+    font-size: 22px;
+    background-color: #393e46;
+}
+
+.form-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60rem;
+    margin: auto;
+    height: 100%;
+    margin: 4rem;
+    background-color: white;
+    padding: 5rem;
+}
+
+.container {
+    border: solid 3px black;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+.container>*>* {
+    margin: 0.9rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.container>* {
+    display: flex;
+}
+
+input,
+select,
+textarea {
+    margin: 1rem;
+    border: 2px solid rgb(128, 128, 128);
+    text-indent: 10px;
+    border-radius: 5px;
+}
+
+input, 
+select {
+    height: 3.5rem;
+}
+
+textarea {
+    width: 100%;
+    height: 7rem;
+    overflow: scroll;
+}
+
+.line-1 * {
+    margin: 1rem;
+}
+
+.line-1 select {
+    flex: 0.5;
+}
+
+.line-1 input {
+    flex: 2;
+}
+
+#conditional {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#conditional label,
+input {
+    display: block;
+}
+
+#conditional>* {
+    display: flex;
+    justify-content: space-between;
+}
+
+#conditional>*>*>* {
+    display: block;
+}
+
+.item-1 select {
+    width: 10rem;
+}
+
+.item-2 select {
+    width: 15rem;
+}
+
+.item-3 select, .item-4 select {
+    width: 12rem;
+}
+
+.comment-container {
+    display: inline-block;
+}

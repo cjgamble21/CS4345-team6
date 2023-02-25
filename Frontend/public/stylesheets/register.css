@@ -15,7 +15,6 @@ body {
     justify-content: center;
     align-items: center;
     width: 70rem;
-    margin: auto;
     height: 100%;
     margin: 4rem;
     background-color: white;
@@ -88,7 +87,6 @@ textarea {
 
 #conditional {
     display: flex;
-    flex-wrap: wrap;
 }
 
 #conditional label,
@@ -99,6 +97,10 @@ input {
 #conditional>* {
     display: flex;
     justify-content: space-between;
+}
+
+#conditional>*>* {
+    flex-direction: row;
 }
 
 #conditional>*>*>* {
@@ -134,4 +136,8 @@ input {
     color: white;
     border-radius: 30px;
     width: 15rem;
+}
+
+.hide {
+    display: none !important;
 }

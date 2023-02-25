@@ -264,6 +264,7 @@ public class User {
             res.put("degreeBegin", this.degreeBegin);
             res.put("gradDate", this.gradDate);
         }
+
         if (!empty(this.comments))
             res.put("comments", this.comments);
 
@@ -284,7 +285,7 @@ public class User {
     }
 
     private static boolean student(String status) {
-        return status == "Student";
+        return status.equals("Student");
     }
 
 }

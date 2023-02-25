@@ -12,7 +12,7 @@
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="@routes.Assets.at("javascripts/isStudent.js")"></script>
+    <script src="@routes.Assets.at("javascripts/isStudent.js")" defer></script>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
 
     <div class="form-area">
         <h2 class="">Create an Account</h2>
-        <form action="register" method="POST">
+        <form action="/register" method="POST">
             <div class="container">
             <div class="info-header">
                 <h1>Account Info</h1>
@@ -87,9 +87,51 @@
                         <option value="Staff">Staff</option>
                         <option value="Student">Student</option>
                     </select>
+                    </div>
+
+                    <div class="item-2 hide">
+                        <label for="degree" class="remove">Degree Plan</label>
+                        <select id="degree" name="degreePlan" class="remove">
+                            <option value="Ph.D">Ph.D.</option>
+                            <option value="D.E.-SE">D.E.-SE</option>
+                            <option value="MS-CS">MS-CS</option>
+                            <option value="MS-SE">MS-SE</option>
+                            <option value="MS-Cybersecurity">MS-Cybersecurity</option>
+                            <option value="BS-CS">BS-CS</option>
+                            <option value="BA-CS">BA-CS</option>
+                        </select>
+                    </div>
                 </div>
+                    <div class="column-2 hide">
+                        <div class="item-3">
+                            <label for="startdate">Degree Begin</label>
+                            <select id="startdate" name="degreeBegin">
+                                <option value="Fall">Fall</option>
+                                <option value="Spring">Spring</option>
+                                <option value="Fall">Fall</option>
+                                <option value="Spring">Spring</option>
+                                <option value="Fall">Fall</option>
+                                <option value="Spring">Spring</option>
+                                <option value="Fall">Fall</option>
+                                <option value="Spring">Spring</option>
+                            </select>
+                        </div>
+
+                        <div class="item-4">
+                            <label for="graddate">Graduation Date</label>
+                            <select id="graddate" name="gradDate">
+                                <option value="Fall">Fall</option>
+                                <option value="Spring">Spring</option>
+                                <option value="Fall">Fall</option>
+                                <option value="Spring">Spring </option>
+                                <option value="Fall">Fall</option>
+                                <option value="Spring">Spring</option>
+                                <option value="Fall">Fall</option>
+                                <option value="Spring">Spring</option>
+                            </select>
+                        </div>
+                        </div>
                 </div>
-            </div>
             <div class="line-8">
                 <div class="comment-container">
                     <label for="comments">Comments</label>

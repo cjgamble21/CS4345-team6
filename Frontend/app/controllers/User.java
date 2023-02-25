@@ -51,7 +51,7 @@ public class User {
 
 
 
-    public  CompletionStage<WSResponse> registerUser() {
+    public CompletionStage<WSResponse> registerUser() {
 
         WSClient ws = play.test.WSTestClient.newClient(9005);
         // send this. user

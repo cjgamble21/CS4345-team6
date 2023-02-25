@@ -17,6 +17,7 @@ public class User {
     // Account info
     private String username;
     private String password;
+    private String confirmPassword;
 
     // Name & title
     private String title;
@@ -70,12 +71,16 @@ public class User {
         this.password = password;
     }
 
+    public String getConfirmPassword() { return confirmPassword; }
+
+    public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
+
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
-        this.title = titile;
+        this.title = title;
     }
 
     public String getFirstname() {
@@ -232,7 +237,7 @@ public class User {
     public CompletionStage<WSResponse> registerUser() {
 
         WSClient ws = play.test.WSTestClient.newClient(9005);
-        // send this. user
+        // send this user
         ObjectNode res = Json.newObject();
         res.put("username", this.username);
         res.put("password", this.password);
@@ -261,9 +266,9 @@ public class User {
         }
         if (!empty(this.comments))
             res.put("comments", this.comments);
-        
-        System.out.println(username);
-        System.out.println(password);
+
+        System.out.println(this.username);
+        System.out.println(this.password);
 
         WSRequest request = ws.url(this.requestURL + "/signup");
         return request.addHeader("Content-Type", "application/json")
@@ -274,11 +279,11 @@ public class User {
     }
 
     // Helper Methods
-    private static empty(String field) {
+    private static boolean empty(String field) {
         return field == "";
     }
 
-    private static student(String status) {
+    private static boolean student(String status) {
         return status == "Student";
     }
 

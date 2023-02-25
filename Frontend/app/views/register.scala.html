@@ -20,45 +20,46 @@
 
     <div class="form-area">
         <h2 class="">Create an Account</h2>
-        <form action="" method="POST" class="container">
+        <form action="register" method="POST">
+            <div class="container">
             <div class="info-header">
                 <h1>Account Info</h1>
             </div>
 
             <div class="username">
-                <input id="username" placeholder="Username">
+                <input id="username" name="username" placeholder="Username">
             </div>
 
             <div class="password">
-                <input id="password" type="password" placeholder="Password">
-                <input id="confirm" type="password" placeholder="Confirm Password">
+                <input id="password" name="password" type="password" placeholder="Password">
+                <input id="confirm" name="confirmPassword" type="password" placeholder="Confirm Password">
             </div>
             <div class="line-1">
-                <select>
+                <select name="title">
                     <option value="Mr">Mr.</option>
                     <option value="Ms">Ms.</option>
                     <option value="Dr">Dr.</option>
                 </select>
-                <input id="firstname" placeholder="First Name">
-                <input id="lastname" placeholder="Last Name">
+                <input id="firstname" name="firstname" placeholder="First Name">
+                <input id="lastname" name="lastname" placeholder="Last Name">
 
             </div>
 
             <div class="line-2">
-                <input id="email" placeholder="Email">
-                <input id="phone" placeholder="Phone">
-                <input id="fax" placeholder="Fax (optional)">
+                <input id="email" name="email" placeholder="Email">
+                <input id="phone" name="phone" placeholder="Phone">
+                <input id="fax" name="fax" placeholder="Fax (optional)">
 
             </div>
 
             <div class="line-3">
-                <input id="address" placeholder="Address">
+                <input id="address" name="address" placeholder="Address">
 
             </div>
             <div class="line-4">
-                <input id="city" placeholder="City">
+                <input id="city" name="city" placeholder="City">
                 @states()
-                <input id="zip" placeholder="Zip Code">
+                <input id="zip" name="zip" placeholder="Zip Code">
 
             </div>
 
@@ -66,13 +67,13 @@
                 <h1>Research Info (Optional)</h1>
             </div>
             <div class="line-5">
-                <input id="research" placeholder="Research Areas">
+                <input id="research" name="researchAreas" placeholder="Research Areas">
 
             </div>
 
             <div class="line-6">
-                <input id="position" placeholder="Position">
-                <input id="affiliation" placeholder="Affiliation">
+                <input id="position" name="position" placeholder="Position">
+                <input id="affiliation" name="affiliation" placeholder="Affiliation">
 
             </div>
             <div id="conditional" class="line-7">
@@ -80,7 +81,7 @@
                 <div id="non-student" class="column-1">
                     <div class="item-1">
                     <label for="status">Status</label>
-                    <select id="status" onchange="isStudent()">
+                    <select id="status" name="status" onchange="isStudent()">
                         <option disabled selected hidden></option>
                         <option value="Faculty">Faculty</option>
                         <option value="Staff">Staff</option>
@@ -91,14 +92,15 @@
             </div>
             <div class="line-8">
                 <div class="comment-container">
-                <label for="comments">Comments</label>
-                <textarea id="comments" placeholder="Anything else we should know about you?"></textarea>
+                    <label for="comments">Comments</label>
+                    <textarea id="comments" name="comments" placeholder="Anything else we should know about you?"></textarea>
+                </div>
             </div>
+            </div>
+            <div class="button-fields">
+                <button type="submit">Register</button>
             </div>
         </form>
-        <div class="button-fields">
-            <button>Register</button>
-        </div>
     </div>
 </body>
 

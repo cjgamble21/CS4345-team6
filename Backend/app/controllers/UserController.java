@@ -2,17 +2,11 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import models.User;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-
-
-/**
- * @description: user reg/login
- * @author: Swati Bhat
- * @create: 2019-11-16 15:15
- */
 
 public class UserController extends Controller {
 
@@ -47,21 +41,22 @@ public class UserController extends Controller {
     public Result registerNew() {
         System.out.println("In register");
         JsonNode req = request().body().asJson();
+        ObjectMapper mapper = new ObjectMapper();
         String username = req.get("username").asText();
-        String password = req.get("password").asText();
-
         User u = User.findByName(username);
         ObjectNode result = null;
         if (u == null) {
             System.out.println("new user");
             result = Json.newObject();
-            User user = new User();
-            user.username=username;
-            user.password=password;
-            user.save();
+            try {
+                User user = mapper.treeToValue(req, User.class);
+                user.save();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
             result.put("body", username);
         }
         return ok(result);
     }
-
 }

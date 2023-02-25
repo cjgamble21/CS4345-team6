@@ -11,9 +11,6 @@ import views.html.*;
 import javax.inject.Inject;
 import java.util.concurrent.CompletionStage;
 
-/**
- * Software Service Market Place
- */
 public class HomeController extends Controller {
 
     @Inject
@@ -26,16 +23,10 @@ public class HomeController extends Controller {
         this.formFactory = formFactory;
     }
 
-    /**
-     * Index page
-     */
     public Result index() {
         return ok(views.html.login.render(""));
     }
 
-    /**
-     * Index page
-     */
     public Result signup() {
         return ok(views.html.register.render(null));
     }
@@ -67,7 +58,11 @@ public class HomeController extends Controller {
 
         Form<User> registrationForm = formFactory.form(User.class).bindFromRequest();
         if (registrationForm.hasErrors()){
+            System.out.println("errors");
             return (CompletionStage<Result>) badRequest(views.html.register.render(null));
+        } else {
+            System.out.println("readme");
+            System.out.println(registrationForm.get().getUsername());
         }
         return registrationForm.get().registerUser()
                 .thenApplyAsync((WSResponse r) -> {

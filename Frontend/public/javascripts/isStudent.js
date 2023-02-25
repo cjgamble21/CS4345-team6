@@ -6,7 +6,7 @@ const isStudent = () => {
   const column1 = `
       <div class="item-2">
       <label for="degree" class="remove">Degree Plan</label>
-      <select id="degree" class="remove">
+      <select id="degree" name="degreePlan" class="remove">
           <option value="Ph.D">Ph.D.</option>
           <option value="D.E.-SE">D.E.-SE</option>
           <option value="MS-CS">MS-CS</option>
@@ -23,7 +23,7 @@ const isStudent = () => {
       <div class="column-2 remove">
       <div class="item-3">
       <label for="startdate">Degree Begin</label>
-      <select id="startdate">
+      <select id="startdate" name="degreeBegin">
           <option value="Fall ${possibleStartDates[0]}">Fall ${possibleStartDates[0]}</option>
           <option value="Spring ${possibleStartDates[0]}">Spring ${possibleStartDates[0]}</option>
           <option value="Fall ${possibleStartDates[1]}">Fall ${possibleStartDates[1]}</option>
@@ -37,7 +37,7 @@ const isStudent = () => {
 
       <div class="item-4">
       <label for="graddate">Graduation Date</label>
-      <select id="graddate">
+      <select id="graddate" name="gradDate">
           <option value="Fall ${possibleGraduateDates[0]}">Fall ${possibleGraduateDates[0]}</option>
           <option value="Spring ${possibleGraduateDates[0]}">Spring ${possibleGraduateDates[0]}</option>
           <option value="Fall ${possibleGraduateDates[1]}">Fall ${possibleGraduateDates[1]}</option>

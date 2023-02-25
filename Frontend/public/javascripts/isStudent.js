@@ -40,8 +40,13 @@ const isStudent = () => {
       </select>
   `;
   let status = document.getElementById('status').value;
+  let studentContent = document.createElement('div');
+  studentContent.innerHTML = studentHTML;
+  studentContent.setAttribute('id', 'student')
 
   if (status == "Student") {
-    document.getElementById('conditional').insertAdjacentHTML("beforeend", studentHTML);
+    document.getElementById('conditional').appendChild(studentContent);
+  } else {
+    document.getElementById('student').remove();
   }
 }

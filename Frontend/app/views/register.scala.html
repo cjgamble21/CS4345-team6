@@ -7,76 +7,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Create Account</title>
+    <link href='https://fonts.googleapis.com/css?family=Convergence' rel='stylesheet'>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="@routes.Assets.at("javascripts/isStudent.js")"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .form-area {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 60rem;
+            margin: auto;
+        }
+
+        .container {
+            border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container > * > * {
+            margin: 1rem;
+            flex: 1;
+        }
+
+        .container > * {
+            display: flex;
+        }
+
+        input, select {
+            margin: 1rem;
+            border: 2px solid gray;
+            text-indent: 10px;
+            border-radius: 5px;
+            height: 3.5rem;
+        }
+
+        .line-1 * {
+            margin: 1rem;
+        }
+
+        .line-1 select {
+            flex: 0.5;
+        }
+
+        .line-1 input {
+            flex: 2;
+        }
+        
+    </style>
 </head>
 
-<body>
+<body style="font-family:Convergence; font-size:22px">
 
     @header()
 
-    <div class="flex items-center justify-center h-screen">
-        <div class="flex container border-solid border-2 border-black">
-            <form action="" method="POST">
-                <div class="flex border-solid border-2 border-red-300">
-                    <select class="flex-none">
-                        <option></option>
+    <div class="form-area">
+        <h2 class="">Create an Account</h2>
+        <form action="" method="POST" class="container">
+                <div class="info-header">
+                    <h1>Personal Info</h1>
+                </div>
+                <div class="line-1">
+                    <select>
                         <option value="Mr">Mr.</option>
                         <option value="Ms">Ms.</option>
                         <option value="Dr">Dr.</option>
                     </select>
-                    <input id="firstname" class="flex-auto">
-                    <label for="firstname" class="flex-auto">First Name</label>
+                    <input id="firstname" placeholder="First Name">
+                    <input id="lastname" placeholder="Last Name">
 
-                    <input id="lastname">
-                    <label for="lastname">Last Name</label>
                 </div>
 
-                <div>
-                    <input id="email">
-                    <label for="email">Email</label>
+                <div class="line-2">
+                    <!-- <label for="email">Email</label> -->
+                    <input id="email" placeholder="Email">
 
-                    <input id="phone">
-                    <label for="phone">Phone</label>
 
-                    <input id="fax">
-                    <label for="fax">Fax (optional)</label>
+                    <!-- <label for="phone">Phone</label> -->
+                    <input id="phone" placeholder="Phone">
+
+                    <!-- <label for="fax">Fax (optional)</label> -->
+                    <input id="fax" placeholder="Fax (optional)">
+
                 </div>
 
-                <div>
-                    <input id="address">
-                    <label for="address">Address</label>
+                <div class="line-3">
+                    <!-- <label for="address">Address</label> -->
+                    <input id="address" placeholder="Address">
+
                 </div>
-                <div>
-                    <input id="city">
-                    <label for="city">City</label>
+                <div class="line-4">
+                    <!-- <label for="city">City</label> -->
+                    <input id="city" placeholder="City">
+
 
                     @states()
 
-                    <input id="zip">
-                    <label for="zip">Zip Code</label>
-                </div>
-                <div>
-                    <input id="research">
-                    <label for="research">Research Areas (optional)</label>
+                    <!-- <label for="zip">Zip Code</label> -->
+                    <input id="zip" placeholder="Zip Code">
+
                 </div>
 
-                <div>
-                    <input id="position">
-                    <label for="position">Position (if applicable)</label>
-
-                    <input id="affiliation">
-                    <label for="affiliation">Affiliation (if applicable)</label>
+                <div class="research-info">
+                    <h1>Research Info</h1>
                 </div>
-                <div>
-                    <input id="comments">
+                <div class="line-5">
+                    <!-- <label for="research">Research Areas (optional)</label> -->
+                    <input id="research" placeholder="Research Areas (optional)">
+
+                </div>
+
+                <div class="line-6">
+                    <!-- <label for="position">Position (if applicable)</label> -->
+                    <input id="position" placeholder="Position (if applicable)">
+
+
+                    <!-- <label for="affiliation">Affiliation (if applicable)</label> -->
+                    <input id="affiliation" placeholder="Affiliation (if applicable)">
+
+                </div>
+                <!-- <div>
                     <label for="comments">Comments</label>
-                </div>
+                    <textarea id="comments"></textarea>
+
+                </div> -->
                 <div id="conditional">
                     <!-- conditionally render based on select field input -->
+                    <div id="non-student">
                     <select id="status" onchange="isStudent()">
                         <option></option>
                         <option value="Faculty">Faculty</option>
@@ -84,8 +151,8 @@
                         <option value="Student">Student</option>
                     </select>
                 </div>
-            </form>
-        </div>
+            </div> 
+    </form>
     </div>
 </body>
 

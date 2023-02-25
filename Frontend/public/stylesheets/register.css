@@ -4,9 +4,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
-    font-family: Convergence; 
     font-size: 22px;
-    background-color: #393e46;
+    background-color: #09173F;
+    overflow-x: hidden;
 }
 
 .form-area {
@@ -14,12 +14,19 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60rem;
+    width: 70rem;
     margin: auto;
     height: 100%;
     margin: 4rem;
     background-color: white;
+    font-family: 'PT Sans Caption', sans-serif;
     padding: 5rem;
+    /* border: 7px solid #DC0039; */
+}
+
+.form-area h2 {
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .container {
@@ -28,6 +35,10 @@ body {
     flex-direction: column;
     padding: 2rem;
     margin-top: 1rem;
+}
+
+.container h2 {
+    font-size: 1em;
 }
 
 .container>*>* {
@@ -72,6 +83,10 @@ textarea {
     flex: 2;
 }
 
+.line-2 > input:first-child {
+    flex: 1.5;
+}
+
 #conditional {
     display: flex;
     flex-wrap: wrap;
@@ -105,4 +120,19 @@ input {
 
 .comment-container {
     display: inline-block;
+}
+
+.button-fields {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.button-fields button {
+    padding: 1rem;
+    background-color: #DC0039;
+    color: white;
+    border-radius: 30px;
+    width: 15rem;
 }

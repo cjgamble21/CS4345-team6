@@ -19,14 +19,23 @@
             box-sizing: border-box;
         }
 
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
         .form-area {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             width: 60rem;
             margin: auto;
+            height: 100%;
+            margin: 4rem;
         }
 
         .container {
@@ -35,16 +44,17 @@
             flex-direction: column;
         }
 
-        .container > * > * {
-            margin: 1rem;
+        .container>*>* {
+            margin: 0.9rem;
             flex: 1;
         }
 
-        .container > * {
+        .container>* {
             display: flex;
         }
 
-        input, select {
+        input,
+        select {
             margin: 1rem;
             border: 2px solid gray;
             text-indent: 10px;
@@ -63,7 +73,19 @@
         .line-1 input {
             flex: 2;
         }
-        
+
+        #conditional {
+            display: flex;
+        }
+
+        #conditional label,
+        input {
+            display: block;
+        }
+
+        .states div[disabled] {
+            color: gray;
+        }
     </style>
 </head>
 
@@ -74,76 +96,77 @@
     <div class="form-area">
         <h2 class="">Create an Account</h2>
         <form action="" method="POST" class="container">
-                <div class="info-header">
-                    <h1>Personal Info</h1>
-                </div>
-                <div class="line-1">
-                    <select>
-                        <option value="Mr">Mr.</option>
-                        <option value="Ms">Ms.</option>
-                        <option value="Dr">Dr.</option>
-                    </select>
-                    <input id="firstname" placeholder="First Name">
-                    <input id="lastname" placeholder="Last Name">
+            <div class="info-header">
+                <h1>Personal Info</h1>
+            </div>
+            <div class="line-1">
+                <select>
+                    <option value="Mr">Mr.</option>
+                    <option value="Ms">Ms.</option>
+                    <option value="Dr">Dr.</option>
+                </select>
+                <input id="firstname" placeholder="First Name">
+                <input id="lastname" placeholder="Last Name">
 
-                </div>
+            </div>
 
-                <div class="line-2">
-                    <!-- <label for="email">Email</label> -->
-                    <input id="email" placeholder="Email">
-
-
-                    <!-- <label for="phone">Phone</label> -->
-                    <input id="phone" placeholder="Phone">
-
-                    <!-- <label for="fax">Fax (optional)</label> -->
-                    <input id="fax" placeholder="Fax (optional)">
-
-                </div>
-
-                <div class="line-3">
-                    <!-- <label for="address">Address</label> -->
-                    <input id="address" placeholder="Address">
-
-                </div>
-                <div class="line-4">
-                    <!-- <label for="city">City</label> -->
-                    <input id="city" placeholder="City">
+            <div class="line-2">
+                <!-- <label for="email">Email</label> -->
+                <input id="email" placeholder="Email">
 
 
-                    @states()
+                <!-- <label for="phone">Phone</label> -->
+                <input id="phone" placeholder="Phone">
 
-                    <!-- <label for="zip">Zip Code</label> -->
-                    <input id="zip" placeholder="Zip Code">
+                <!-- <label for="fax">Fax (optional)</label> -->
+                <input id="fax" placeholder="Fax (optional)">
 
-                </div>
+            </div>
 
-                <div class="research-info">
-                    <h1>Research Info</h1>
-                </div>
-                <div class="line-5">
-                    <!-- <label for="research">Research Areas (optional)</label> -->
-                    <input id="research" placeholder="Research Areas (optional)">
+            <div class="line-3">
+                <!-- <label for="address">Address</label> -->
+                <input id="address" placeholder="Address">
 
-                </div>
-
-                <div class="line-6">
-                    <!-- <label for="position">Position (if applicable)</label> -->
-                    <input id="position" placeholder="Position (if applicable)">
+            </div>
+            <div class="line-4">
+                <!-- <label for="city">City</label> -->
+                <input id="city" placeholder="City">
 
 
-                    <!-- <label for="affiliation">Affiliation (if applicable)</label> -->
-                    <input id="affiliation" placeholder="Affiliation (if applicable)">
+                @states()
 
-                </div>
-                <!-- <div>
+                <!-- <label for="zip">Zip Code</label> -->
+                <input id="zip" placeholder="Zip Code">
+
+            </div>
+
+            <div class="research-info">
+                <h1>Research Info</h1>
+            </div>
+            <div class="line-5">
+                <!-- <label for="research">Research Areas (optional)</label> -->
+                <input id="research" placeholder="Research Areas (optional)">
+
+            </div>
+
+            <div class="line-6">
+                <!-- <label for="position">Position (if applicable)</label> -->
+                <input id="position" placeholder="Position (if applicable)">
+
+
+                <!-- <label for="affiliation">Affiliation (if applicable)</label> -->
+                <input id="affiliation" placeholder="Affiliation (if applicable)">
+
+            </div>
+            <!-- <div>
                     <label for="comments">Comments</label>
                     <textarea id="comments"></textarea>
 
                 </div> -->
-                <div id="conditional">
-                    <!-- conditionally render based on select field input -->
-                    <div id="non-student">
+            <div id="conditional">
+                <!-- conditionally render based on select field input -->
+                <div id="non-student">
+                    <label for="status">Status</label>
                     <select id="status" onchange="isStudent()">
                         <option></option>
                         <option value="Faculty">Faculty</option>
@@ -151,8 +174,8 @@
                         <option value="Student">Student</option>
                     </select>
                 </div>
-            </div> 
-    </form>
+            </div>
+        </form>
     </div>
 </body>
 

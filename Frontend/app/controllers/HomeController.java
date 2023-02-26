@@ -54,12 +54,12 @@ public class HomeController extends Controller {
                 }, ec.current());
     }
 
-    public CompletionStage<Result> signupHandler() {
+    public Result signupHandler() {
 
         Form<User> registrationForm = formFactory.form(User.class).bindFromRequest();
         if (registrationForm.hasErrors()){
             System.out.println("errors");
-            return (CompletionStage<Result>) badRequest(views.html.register.render(null));
+            return badRequest(views.html.register.render(null));
         } else {
             System.out.println("readme");
             System.out.println(registrationForm.get().getUsername());

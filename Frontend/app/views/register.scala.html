@@ -27,12 +27,12 @@
             </div>
 
             <div class="username">
-                <input id="username" name="username" placeholder="Username">
+                <input id="username" name="username" placeholder="Username" required>
             </div>
 
             <div class="password">
-                <input id="password" name="password" type="password" placeholder="Password">
-                <input id="confirm" name="confirmPassword" type="password" placeholder="Confirm Password">
+                <input id="password" name="password" type="password" placeholder="Password" required>
+                <input id="confirm" name="confirmPassword" type="password" placeholder="Confirm Password" required>
             </div>
             <div class="line-1">
                 <select name="title">
@@ -40,26 +40,26 @@
                     <option value="Ms">Ms.</option>
                     <option value="Dr">Dr.</option>
                 </select>
-                <input id="firstname" name="firstname" placeholder="First Name">
-                <input id="lastname" name="lastname" placeholder="Last Name">
+                <input id="firstname" name="firstname" placeholder="First Name" required>
+                <input id="lastname" name="lastname" placeholder="Last Name" required>
 
             </div>
 
             <div class="line-2">
-                <input id="email" name="email" placeholder="Email">
-                <input id="phone" name="phone" placeholder="Phone">
+                <input id="email" name="email" placeholder="Email" required>
+                <input id="phone" name="phone" placeholder="Phone" required>
                 <input id="fax" name="fax" placeholder="Fax (optional)">
 
             </div>
 
             <div class="line-3">
-                <input id="address" name="address" placeholder="Address">
+                <input id="address" name="address" placeholder="Address" required>
 
             </div>
             <div class="line-4">
-                <input id="city" name="city" placeholder="City">
+                <input id="city" name="city" placeholder="City" required>
                 @states()
-                <input id="zip" name="zip" placeholder="Zip Code">
+                <input id="zip" name="zip" placeholder="Zip Code" required>
 
             </div>
 
@@ -81,7 +81,7 @@
                 <div id="non-student" class="column-1">
                     <div class="item-1">
                     <label for="status">Status</label>
-                    <select id="status" name="status" onchange="isStudent()">
+                    <select id="status" name="status" onchange="isStudent()" required>
                         <option disabled selected hidden></option>
                         <option value="Faculty">Faculty</option>
                         <option value="Staff">Staff</option>

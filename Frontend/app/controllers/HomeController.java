@@ -54,16 +54,16 @@ public class HomeController extends Controller {
                 }, ec.current());
     }
 
-    public Result signupHandler() {
+    public CompletionStage<Result> signupHandler() {
 
         Form<User> registrationForm = formFactory.form(User.class).bindFromRequest();
-        if (registrationForm.hasErrors()){
-            System.out.println("errors");
-            return badRequest(views.html.register.render(null));
-        } else {
-            System.out.println("readme");
-            System.out.println(registrationForm.get().getUsername());
-        }
+        // if (registrationForm.hasErrors()){
+        //     System.out.println("errors");
+        //     return (CompletionStage<Result>) badRequest(views.html.register.render(null));
+        // } else {
+        //     System.out.println("readme");
+        //     System.out.println(registrationForm.get().getUsername());
+        // }
         return registrationForm.get().registerUser()
                 .thenApplyAsync((WSResponse r) -> {
                     if (r.getStatus() == 200 && r.asJson() != null) {

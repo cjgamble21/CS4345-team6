@@ -78,4 +78,10 @@ public class HomeController extends Controller {
                 }, ec.current());
 
     }
+
+    public CompletionStage<Result> submitApplication() {
+        Form<Application> applicationForm = formFactory.form(Application.class).bindFromRequest();
+
+        
+    }
 }

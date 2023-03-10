@@ -116,7 +116,7 @@ public class Application {
         this.thirdPreference = thirdPreference;
     }
 
-    public CompletionStage<Application> submitApplication() {
+    public CompletionStage<Application> apply() {
         WSClient ws = play.test.WSTestClient.newClient(9005);
         
         ObjectNode res = Json.newObject();
@@ -135,6 +135,13 @@ public class Application {
 
         if (!empty(this.thirdPreference))
             res.put("thirdPreference", this.thirdPreference);
+
+        WSRequest request = ws.url(this.requestURL + "/apply");
+        return request.addHeader("Content-Type", "application/json")
+                .post(res)
+                .thenApply((WSResponse r) -> {
+                    return r;
+                });
 
     }
 

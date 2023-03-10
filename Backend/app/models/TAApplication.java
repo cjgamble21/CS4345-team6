@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import java.util.List;
 
 @Entity
-public class Application extends Model {
+public class TAApplication extends Model {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -41,5 +41,12 @@ public class Application extends Model {
     public String thirdPreference;
     public String nonPreference;
 
-    public static Find<Long, Application> find = new Find<Long, Application>(){};
+    public static Find<Long, TAApplication> find = new Find<Long, TAApplication>(){};
+
+    public static TAApplication findByName(String name) {
+        return TAApplication.find
+                .where()
+                .eq("firstname", name)
+                .findUnique();
+    }
 }

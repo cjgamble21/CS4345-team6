@@ -6,6 +6,7 @@ import play.libs.Json;
 import play.libs.ws.WSClient;
 import play.libs.ws.WSRequest;
 import play.libs.ws.WSResponse;
+import play.data.validation.Constraints;
 
 import java.util.concurrent.CompletionStage;
 
@@ -116,7 +117,7 @@ public class Application {
         this.thirdPreference = thirdPreference;
     }
 
-    public CompletionStage<Application> apply() {
+    public CompletionStage<WSResponse> apply() {
         WSClient ws = play.test.WSTestClient.newClient(9005);
         
         ObjectNode res = Json.newObject();

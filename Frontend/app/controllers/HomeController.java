@@ -31,6 +31,10 @@ public class HomeController extends Controller {
         return ok(views.html.register.render(null));
     }
 
+    public Result dashboard() {
+        return ok(views.html.dashboard.render());
+    }
+
     public CompletionStage<Result> loginHandler() {
 
         Form<User> loginForm = formFactory.form(User.class).bindFromRequest();
@@ -69,7 +73,7 @@ public class HomeController extends Controller {
                     if (r.getStatus() == 200 && r.asJson() != null) {
                         System.out.println("success");
                         System.out.println(r.asJson());
-                        session("username",loginForm.get().getUsername());
+                        session("username", registrationForm.get().getUsername());
                         return ok(login.render(""));
                     } else {
                         System.out.println("response null");
@@ -82,6 +86,15 @@ public class HomeController extends Controller {
     public CompletionStage<Result> submitApplication() {
         Form<Application> applicationForm = formFactory.form(Application.class).bindFromRequest();
 
-        
+        return applicationForm.get().apply()
+            .thenApplyAsync((WSResponse r) -> {
+                if (r.getStatus() == 200 && r.asJson() != null) {
+                    System.out.println("success");
+                    return ok("success");
+                } else {
+                    System.out.println("error");
+                    return badRequest("error");
+                }
+            }, ec.current());
     }
 }

@@ -1,0 +1,3 @@
+const validateRegistration = e => {
+
+}

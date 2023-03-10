@@ -69,6 +69,7 @@ public class HomeController extends Controller {
                     if (r.getStatus() == 200 && r.asJson() != null) {
                         System.out.println("success");
                         System.out.println(r.asJson());
+                        session("username",loginForm.get().getUsername());
                         return ok(login.render(""));
                     } else {
                         System.out.println("response null");

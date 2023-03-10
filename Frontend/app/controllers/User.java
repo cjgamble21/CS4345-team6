@@ -7,13 +7,10 @@ import play.libs.ws.WSClient;
 import play.libs.ws.WSRequest;
 import play.libs.ws.WSResponse;
 import play.data.validation.Constraints;
-import play.data.validation.Constraints.Validate;
-import play.data.validation.Constraints.Validatable;
 
 import java.util.concurrent.CompletionStage;
 
-@Validate
-public class User implements Validatable<String> {
+public class User {
 
     private String requestURL = ConfigFactory.load().getString("backend.url");
 
@@ -57,13 +54,6 @@ public class User implements Validatable<String> {
 
     // Comments
     private String comments;
-
-    @Override
-    public String validate() {
-        if (!password.equals("123"))
-            return "Password error";
-        return null;
-    }
 
     public String getUsername() {
         return username;
@@ -291,7 +281,7 @@ public class User implements Validatable<String> {
 
     // Helper Methods
     private static boolean empty(String field) {
-        return field == "";
+        return field.equals("");
     }
 
     private static boolean student(String status) {

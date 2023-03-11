@@ -1,0 +1,10 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 22px;
+    background-color: #09173F;
+    overflow-x: hidden;
+}

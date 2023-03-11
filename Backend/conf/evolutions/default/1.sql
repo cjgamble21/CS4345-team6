@@ -3,6 +3,13 @@
 
 # --- !Ups
 
+create table course (
+  id                            bigint auto_increment not null,
+  user_id                       bigint,
+  name                          varchar(255),
+  constraint pk_course primary key (id)
+);
+
 create table taapplication (
   id                            bigint auto_increment not null,
   firstname                     varchar(255),
@@ -12,7 +19,6 @@ create table taapplication (
   degree_plan                   varchar(255),
   degree_begin                  varchar(255),
   grad_date                     varchar(255),
-  courses_taken                 varchar(255),
   first_preference              varchar(255),
   second_preference             varchar(255),
   third_preference              varchar(255),
@@ -45,8 +51,16 @@ create table user (
   constraint pk_user primary key (id)
 );
 
+alter table course add constraint fk_course_user_id foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_course_user_id on course (user_id);
+
 
 # --- !Downs
+
+alter table course drop foreign key fk_course_user_id;
+drop index ix_course_user_id on course;
+
+drop table if exists course;
 
 drop table if exists taapplication;
 

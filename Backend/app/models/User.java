@@ -4,8 +4,8 @@ import com.avaje.ebean.ExpressionList;
 import com.avaje.ebean.Model;
 import play.data.validation.Constraints;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import models.Course;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -63,6 +63,9 @@ public class User extends Model {
 
     // Comments
     public String comments;
+
+    @OneToMany(mappedBy = "user")
+    public List<Course> coursesTaken;
 
     public static Find<Long, User> find = new Find<Long, User>(){};
 

@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Play Setup Demo</title>
+    <title>Login</title>
+    <link href="@routes.Assets.at("stylesheets/login.css")" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -16,7 +17,23 @@
 <body>
     @header()
 
-    <div>Hello</div>
+    <div class="form-area">
+        <h2>Login to Your Account</h2>
+        <form action="/login" method="POST">
+            <div class="container">
+                <div class="username">
+                    <input id="username" name="username" placeholder="Username" required>
+                </div>
+
+                <div class="password">
+                    <input id="password" name="password" placeholder="Password" type="password" required>
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="login">Login</button>
+            </div>
+        </form>
+    </div>
 
 </body>
 

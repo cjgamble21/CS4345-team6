@@ -1,0 +1,45 @@
+@(user: User)
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>TA Application</title>
+    <link href="@routes.Assets.at("stylesheets/application.css")" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="@routes.Assets.at("javascripts/isStudent.js")" defer></script>
+</head>
+
+<body>
+    <div class="application-area">
+        <h2>Submit your Application</h2>
+        <form action="/apply" method="POST">
+            <div class="container">
+                <div class="autofill">
+                    <h1>Generic Info</h1>
+                </div>
+
+                <div class="name">
+                    <input id="firstname" name="firstname" value="@user.getFirstname" readonly>
+                    <input id="lastname" name="lastname" value="@user.getLastname" readonly>
+                </div>
+
+                <div class="email-phone">
+                    <input id="email" name="email" value="@user.getEmail" readonly>
+                    <input id="phone" name="phone" value="@user.getPhone" readonly>
+                </div>
+
+                <div class="degree">
+                    <select id="plan" name="degreePlan" value="@user.getDegreePlan" readonly></select>
+                    <select id="start" name="degreeBegin" value="@user.getDegreeBegin" readonly></select>
+                    <select id="end" name="gradDate" value="@user.getGradDate" readonly></select>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

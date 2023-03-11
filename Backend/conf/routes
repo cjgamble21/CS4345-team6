@@ -14,3 +14,5 @@ POST    /signup                      controllers.UserController.registerNew()
 
 POST    /apply                       controllers.TAApplicationController.saveApplication()
 
+GET     /user/:username              controllers.UserController.getUserByName(username: String)
+

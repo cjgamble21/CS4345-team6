@@ -1,6 +1,9 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.typesafe.config.ConfigFactory;
 import play.libs.Json;
 import play.libs.ws.WSClient;
@@ -10,9 +13,10 @@ import play.data.validation.Constraints;
 
 import java.util.concurrent.CompletionStage;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
-    private String requestURL = ConfigFactory.load().getString("backend.url");
+    public static String requestURL = ConfigFactory.load().getString("backend.url");
 
     // Account info
     private String username;
@@ -222,7 +226,7 @@ public class User {
     public CompletionStage<WSResponse> checkAuthorized() {
         WSClient ws = play.test.WSTestClient.newClient(9005);
         //add username password
-        WSRequest request = ws.url(this.requestURL + "/login");
+        WSRequest request = ws.url(requestURL + "/login");
         ObjectNode res = Json.newObject();
         res.put("username", this.username);
         res.put("password", this.password);
@@ -271,12 +275,29 @@ public class User {
         System.out.println(this.username);
         System.out.println(this.password);
 
-        WSRequest request = ws.url(this.requestURL + "/signup");
+        WSRequest request = ws.url(requestURL + "/signup");
         return request.addHeader("Content-Type", "application/json")
                 .post(res)
                 .thenApply((WSResponse r) -> {
                     return r;
                 });
+    }
+
+    public static User getUserByName(String name) {
+        WSClient ws = play.test.WSTestClient.newClient(9005);
+
+        WSRequest request = ws.url(requestURL + "/user/" + name);
+        WSResponse res = request.get().toCompletableFuture().join();
+        
+        JsonNode userJson = res.asJson();
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            User user = mapper.treeToValue(userJson, User.class);
+            return user;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
     // Helper Methods

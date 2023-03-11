@@ -5,6 +5,7 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index()
++nocsrf
 POST    /login                      controllers.HomeController.loginHandler()
 
 GET     /register                   controllers.HomeController.signup()

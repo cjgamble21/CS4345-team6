@@ -59,4 +59,16 @@ public class UserController extends Controller {
         }
         return ok(result);
     }
+
+    public Result getUserByName(String name) {
+        try {
+            User user = User.findByName(name);
+            JsonNode jsonNode = Json.toJson(user);
+            String result = jsonNode.toString();
+            return ok(result);
+        } catch (Exception e) {
+            System.out.println("Exception in getUserByName: " + e.toString());
+            return internalServerError(e.toString());
+        }
+    }
 }

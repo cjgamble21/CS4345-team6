@@ -32,7 +32,7 @@ public class HomeController extends Controller {
     }
 
     public Result dashboard() {
-        return ok(views.html.dashboard.render());
+        return ok(views.html.dashboard.render(null));
     }
 
     public CompletionStage<Result> loginHandler() {
@@ -49,7 +49,9 @@ public class HomeController extends Controller {
                         // add username to session
                         session("username",loginForm.get().getUsername());   // store username in session for your project
                         // redirect to index page, to display all categories
-                        return ok(views.html.index.render("Welcome!!! " + loginForm.get().getUsername()));
+                        User user = User.getUserByName(loginForm.get().getUsername());
+                        System.out.println(session("username"));
+                        return ok(views.html.dashboard.render(user));
                     } else {
                         System.out.println("response null");
                         String authorizeMessage = "Incorrect Username or Password ";
@@ -61,20 +63,14 @@ public class HomeController extends Controller {
     public CompletionStage<Result> signupHandler() {
 
         Form<User> registrationForm = formFactory.form(User.class).bindFromRequest();
-        // if (registrationForm.hasErrors()){
-        //     System.out.println("errors");
-        //     return (CompletionStage<Result>) badRequest(views.html.register.render(null));
-        // } else {
-        //     System.out.println("readme");
-        //     System.out.println(registrationForm.get().getUsername());
-        // }
+   
         return registrationForm.get().registerUser()
                 .thenApplyAsync((WSResponse r) -> {
                     if (r.getStatus() == 200 && r.asJson() != null) {
                         System.out.println("success");
                         System.out.println(r.asJson());
                         session("username", registrationForm.get().getUsername());
-                        return ok(login.render(""));
+                        return ok(views.html.dashboard.render(registrationForm.get()));
                     } else {
                         System.out.println("response null");
                         return badRequest(views.html.register.render("Username already exists"));

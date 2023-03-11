@@ -8,3 +8,83 @@ body {
     background-color: #09173F;
     overflow-x: hidden;
 }
+
+.application-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70rem;
+    height: 100%;
+    margin: 4rem;
+    background-color: white;
+    font-family: 'PT Sans Caption', sans-serif;
+    padding: 5rem;
+}
+
+.application-area h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.container {
+    border: solid 3px black;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+.container h2 {
+    font-size: 1em;
+}
+
+.container>*>* {
+    margin: 0.9rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.container>* {
+    display: flex;
+}
+
+input,
+select {
+    margin: 1rem;
+    border: 2px solid rgb(128, 128, 128);
+    text-indent: 10px;
+    border-radius: 5px;
+    height: 3.5rem;
+}
+
+select {
+    width: 12rem;
+}
+
+label, input {
+    display: block;
+}
+
+.courses-row-1>* {
+    width: 20rem;
+}
+
+.button {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.button button {
+    padding: 1rem;
+    background-color: #DC0039;
+    color: white;
+    border-radius: 30px;
+    width: 100%;
+}
+
+#coursesTaken {
+    height: 6rem;
+}

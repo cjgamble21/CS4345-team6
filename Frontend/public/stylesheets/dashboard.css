@@ -1,3 +1,21 @@
-.header-buttons {
-    position: absolute;
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 22px;
+    background-color: #09173F;
+    overflow-x: hidden;
 }
+
+.dashboard {
+    color: #DC0039;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25rem;
+    font-size: 80px;
+    font-weight: bold;
+}
+

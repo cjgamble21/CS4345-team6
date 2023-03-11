@@ -21,7 +21,7 @@
         <form action="/apply" method="POST">
             <div class="container">
                 <div class="autofill">
-                    <h1>Generic Info</h1>
+                    <h2>Generic Info</h2>
                 </div>
 
                 <div class="name">
@@ -34,55 +34,84 @@
                     <input id="phone" name="phone" value="@user.getPhone" readonly>
                 </div>
 
+                <div class="student-info">
+                    <h2>Student Info</h2>
+                </div>
+
                 <div class="degree">
-                    <select id="plan" name="degreePlan" readonly>
-                        <option selected value="@user.getDegreePlan">@user.getDegreePlan</option>
-                    </select>
-                    <select id="start" name="degreeBegin" readonly>
-                        <option selected value="@user.getDegreeBegin">@user.getDegreeBegin</option>
-                    </select>
-                    <select id="end" name="gradDate" readonly>
-                        <option selected value="@user.getGradDate">@user.getGradDate</option>
-                    </select>
+                    <div class="degree-plan">
+                        <label for="plan">Degree Plan</label>
+                        <select id="plan" name="degreePlan" readonly>
+                            <option selected value="@user.getDegreePlan">@user.getDegreePlan</option>
+                        </select>
+                    </div>
+                    <div class="degree-begin">
+                        <label for="start">Degree Begin</label>
+                        <select id="start" name="degreeBegin" readonly>
+                            <option selected value="@user.getDegreeBegin">@user.getDegreeBegin</option>
+                        </select>
+                    </div>
+                    <div class="grad-date">
+                        <label for="end">Graduation Date</label>
+                        <select id="end" name="gradDate" readonly>
+                            <option selected value="@user.getGradDate">@user.getGradDate</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="courses-row-1">
                     <div class="courses-taken">
-                        <select id="coursesTaken" name="coursesTaken" multiple required>
-                            <option value="CS2341">CS2341</option>
-                            <option value="CS2353">CS2353</option>
-                            <option value="CS3330">CS3330</option>
-                            <option value="CS3345">CS3345</option>
-                            <option value="CS3339">CS3339</option>
-                        </select>
-
-                        <select id="firstPreference" name="firstPreference" required>
-                            <option value="CS2341">CS2341</option>
-                            <option value="CS2353">CS2353</option>
-                            <option value="CS3330">CS3330</option>
-                            <option value="CS3345">CS3345</option>
-                            <option value="CS3339">CS3339</option>
-                        </select>
+                            <label for="coursesTaken">Courses Taken</label>
+                            <select id="coursesTaken" name="coursesTaken" multiple required>
+                                <option value="CS2341">CS2341</option>
+                                <option value="CS2353">CS2353</option>
+                                <option value="CS3330">CS3330</option>
+                                <option value="CS3345">CS3345</option>
+                                <option value="CS3339">CS3339</option>
+                            </select>
                     </div>
-
-                    <div class="preference">
-                        <select id="secondPreference" name="secondPreference">
-                            <option value="CS2341">CS2341</option>
-                            <option value="CS2353">CS2353</option>
-                            <option value="CS3330">CS3330</option>
-                            <option value="CS3345">CS3345</option>
-                            <option value="CS3339">CS3339</option>
-                        </select>
-
-                        <select id="thirdPreference" name="thirdPreference">
-                            <option value="CS2341">CS2341</option>
-                            <option value="CS2353">CS2353</option>
-                            <option value="CS3330">CS3330</option>
-                            <option value="CS3345">CS3345</option>
-                            <option value="CS3339">CS3339</option>
-                        </select>
+                    
+                    <div class="first-preference">
+                            <label for="firstPreference">1st Preference</label>
+                            <select id="firstPreference" name="firstPreference" required>
+                                <option disabled selected hidden></option>
+                                <option value="CS2341">CS2341</option>
+                                <option value="CS2353">CS2353</option>
+                                <option value="CS3330">CS3330</option>
+                                <option value="CS3345">CS3345</option>
+                                <option value="CS3339">CS3339</option>
+                            </select>
                     </div>
                 </div>
+
+                    <div class="courses-row-2">
+                        <div class="second-preference">
+                            <label for="secondPreference">2nd Preference</label>
+                            <select id="secondPreference" name="secondPreference">
+                                <option disabled selected hidden></option>
+                                <option value="CS2341">CS2341</option>
+                                <option value="CS2353">CS2353</option>
+                                <option value="CS3330">CS3330</option>
+                                <option value="CS3345">CS3345</option>
+                                <option value="CS3339">CS3339</option>
+                            </select>
+                        </div>
+                        
+                        <div class="third-preference">
+                            <label for="thirdPreference">3rd Preference</label>
+                            <select id="thirdPreference" name="thirdPreference">
+                                <option disabled selected hidden></option>
+                                <option value="CS2341">CS2341</option>
+                                <option value="CS2353">CS2353</option>
+                                <option value="CS3330">CS3330</option>
+                                <option value="CS3345">CS3345</option>
+                                <option value="CS3339">CS3339</option>
+                            </select>
+                        </div>
+                    </div>
+            </div>
+            <div class="button">
+                <button type="submit">Submit Application</button>
             </div>
         </form>
     </div>

@@ -31,8 +31,9 @@ public class TAApplication extends Model {
     @Constraints.Required
     public String gradDate;
 
-    // @Constraints.Required
-    // public String coursesTaken;
+    @Constraints.Required
+    public String coursesTaken;
+
     @Constraints.Required
     public String firstPreference;
 

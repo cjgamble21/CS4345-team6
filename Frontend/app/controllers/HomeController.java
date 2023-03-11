@@ -32,7 +32,7 @@ public class HomeController extends Controller {
     }
 
     public Result dashboard() {
-        return ok(views.html.dashboard.render());
+        return ok(views.html.dashboard.render(null));
     }
 
     public CompletionStage<Result> loginHandler() {
@@ -49,8 +49,8 @@ public class HomeController extends Controller {
                         // add username to session
                         session("username",loginForm.get().getUsername());   // store username in session for your project
                         // redirect to index page, to display all categories
-                        sess
-                        return ok(views.html.dashboard.render());
+                        User user = User.getUserByName(loginForm.get().getUsername());
+                        return ok(views.html.dashboard.render(user));
                     } else {
                         System.out.println("response null");
                         String authorizeMessage = "Incorrect Username or Password ";
@@ -85,7 +85,7 @@ public class HomeController extends Controller {
             .thenApplyAsync((WSResponse r) -> {
                 if (r.getStatus() == 200 && r.asJson() != null) {
                     System.out.println("success");
-                    return ok("success");
+                    return ok("Thank you for applying! We will contact you shortly.");
                 } else {
                     System.out.println("error");
                     return badRequest("error");

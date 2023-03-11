@@ -131,11 +131,9 @@ public class Application {
         res.put("coursesTaken", this.coursesTaken);
         res.put("firstPreference", this.firstPreference);
 
-        if (!empty(this.secondPreference))
-            res.put("secondPreference", this.secondPreference);
+        res.put("secondPreference", this.secondPreference);
 
-        if (!empty(this.thirdPreference))
-            res.put("thirdPreference", this.thirdPreference);
+        res.put("thirdPreference", this.thirdPreference);
 
         WSRequest request = ws.url(this.requestURL + "/apply");
         return request.addHeader("Content-Type", "application/json")
@@ -147,6 +145,6 @@ public class Application {
     }
 
     private static boolean empty(String field) {
-        return field.equals("");
+        return field.equals(null) || field.equals("");
     }
 }
